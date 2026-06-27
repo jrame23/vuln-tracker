@@ -2,7 +2,7 @@ from fastapi import FastAPI
 
 from app.database import engine, Base
 from app.models import engagement, host, finding
-from app.routes import engagements
+from app.routes import engagements, hosts
 
 Base.metadata.create_all(bind=engine)
 
@@ -13,6 +13,7 @@ app = FastAPI(
 )
 
 app.include_router(engagements.router)
+app.include_router(hosts.router)
 
 
 @app.get("/")
